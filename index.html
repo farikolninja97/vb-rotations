@@ -24,6 +24,19 @@
 .fallback-message{position:absolute;bottom:53px;left:50%;transform:translateX(-50%);min-width:min(93%,390px);max-width:93%;text-align:center;font-size:11px;color:#e4f4f8;background:#0a2434ee;padding:9px 12px;border:1px solid #527785;border-radius:9px;box-shadow:0 3px 20px #09131e77}
 .reset-lineup{margin-top:12px;width:100%}
 
+/* Serve / receive mode controls */
+.phase-controls{display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;background:#0c1a2a;border:1px solid #345066;border-radius:10px;margin:9px 0 12px}
+.phase-button{border:0;border-radius:8px;background:transparent;color:#a7bdc9;min-height:43px;font-size:13px;font-weight:800;touch-action:manipulation}
+.phase-button.active{background:#266176;color:#fff;box-shadow:inset 0 0 0 1px #60d5d090}
+.phase-button:hover{color:#fff}
+.receive-options{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:9px 0 12px}
+.receive-options[hidden]{display:none}
+.receive-options .field-caption{margin:0;flex:0 0 auto}
+.receive-options select{width:150px;max-width:60%;padding:9px!important}
+.phase-explainer{font-size:11px;line-height:1.5;padding:9px 11px;border:1px solid #335468;border-radius:8px;background:#123047;color:#c9e5e9;margin:8px 0 12px}
+.phase-caption{font-size:10px;line-height:1.35;color:#92afc0;margin:3px 0 13px}
+.court-overlay-top .mode-tag{background:#20465c;border-color:#68c5c4;color:#dcfcf7}
+@media(max-width:550px){.phase-button{min-height:48px}.receive-options{flex-wrap:wrap}}
   </style>
 
 </head>
@@ -87,7 +100,7 @@
                 <div class="fallback-message" id="fallbackMessage"><strong>Preview only</strong> · To move players, open this HTML in a real browser (Safari or Chrome), not a file preview.</div>
               </div>
 
-              <div class="court-overlay-top"><span id="systemTag">5–1 SYSTEM</span><span id="rotationTag">ROTATION 01</span></div>
+              <div class="court-overlay-top"><span id="systemTag">5–1 SYSTEM</span><span id="rotationTag">ROTATION 01</span><span class="mode-tag" id="phaseTag">RECEIVING</span></div>
               <div class="court-side-label" id="teamSideLabel">YOUR TEAM</div>
               <div class="court-hint" id="courtHint">Drag players or the ball to reposition <span>·</span> Tap a player to edit</div>
               <div class="zoom-tools"><button id="zoomIn" title="Zoom in" aria-label="Zoom in">+</button><button id="zoomOut" title="Zoom out" aria-label="Zoom out">−</button></div>
@@ -114,6 +127,17 @@
             <h2>Rotation controls</h2>
             <label for="systemSelect" class="field-caption">OFFENSIVE SYSTEM</label>
             <select id="systemSelect" class="full-select"><option value="5-1">5–1 · One setter</option><option value="6-2">6–2 · Two setters</option></select>
+            <div class="field-caption" id="phaseLabel" style="margin-top:15px">BALL POSSESSION · SERVE / RECEIVE</div>
+            <div class="phase-controls" role="group" aria-labelledby="phaseLabel">
+              <button id="phaseServe" type="button" class="phase-button" aria-pressed="false">↗ Serving</button>
+              <button id="phaseReceive" type="button" class="phase-button active" aria-pressed="true">↙ Receiving</button>
+            </div>
+            <div class="receive-options" id="receiveOptions">
+              <label class="field-caption" for="receiveStyle">PASSERS</label>
+              <select id="receiveStyle" class="full-select"><option value="3">3-player receive</option><option value="2">2-player receive</option></select>
+            </div>
+            <p class="phase-explainer" id="phaseDescription">Receiving: players begin in rotational order before the serve, then move into the pass and attack.</p>
+            <p class="phase-caption">Each rotation and serve/receive setup keeps its own edited keyframes on this device.</p>
             <div class="rotation-controls"><button id="prevRotation" aria-label="Previous rotation"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button><div class="rotation-display"><small>CURRENT ROTATION</small><div><span id="rotationNumber">01</span><span class="rotation-denom">/ 06</span></div></div><button id="nextRotation" aria-label="Next rotation"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button></div>
             <div class="rotation-dots" id="rotationDots" aria-label="Select rotation"></div>
             <div class="context-note" id="systemDescription">The setter runs the offense in every rotation, including from the back row.</div>
@@ -170,36 +194,86 @@
   function initialPositions(players,rotation) {
     return Object.fromEntries(players.map(p=>[p.id,copy(ZONES[zoneFor(p,rotation)])]));
   }
-  function formationFrames(players,rotation) {
+  function serverFor(players,rotation){return players.find(p=>zoneFor(p,rotation)===1);}
+  function receivePassers(players,rotation,receiveStyle=3){
+    const ohs=players.filter(p=>p.role==='OH').map(p=>p.id);
+    if(receiveStyle===2)return ohs;
+    const third=players.filter(p=>p.role!=='OH'&&!['S','S1','S2'].includes(p.role))
+      .sort((a,b)=>([5,6,1].includes(zoneFor(b,rotation))?1:0)-([5,6,1].includes(zoneFor(a,rotation))?1:0)
+        || Math.abs(zoneFor(a,rotation)-6)-Math.abs(zoneFor(b,rotation)-6))[0];
+    return third?[...ohs,third.id]:ohs;
+  }
+  function startingFormation(players,rotation,phase='receiving',receiveStyle=3){
     const start=initialPositions(players,rotation);
-    const active=activeSetter(players,rotation);
-    const transition=copy(start);
-    for (const p of players) {
-      const zone=zoneFor(p,rotation);
-      const front=[2,3,4].includes(zone);
-      if (p.id===active?.id) transition[p.id]={x:2.05,z:1.55};
-      else if (p.role==='OH' && front) transition[p.id]={x:-3.2,z:1.8};
-      else if (p.role==='MB' && front) transition[p.id]={x:-0.1,z:1.45};
-      else if (p.role==='OPP' && front) transition[p.id]={x:3.05,z:1.85};
-      else if (['S','S1','S2'].includes(p.role) && front) transition[p.id]={x:3,z:2.1};
-      else if (front) transition[p.id]={x:-2.8,z:2.25};
-      else transition[p.id]={x:clamp(start[p.id].x*0.85,-3.7,3.7),z:7.0};
+    if(phase==='serving'){
+      const server=serverFor(players,rotation);
+      start[server.id]={x:3.05,z:9.75};
+      return start;
     }
+    const passers=receivePassers(players,rotation,receiveStyle);
+    const setter=activeSetter(players,rotation);
+    for(const p of players){
+      const zone=zoneFor(p,rotation),front=[2,3,4].includes(zone),passing=passers.includes(p.id);
+      const x=ZONES[zone].x;
+      // Lateral zones remain left-to-right in each row; front-row players stay ahead of backs.
+      const z=front?(passing?3.05:2.05):(p.id===setter?.id?4.75:(passing?6.8:7.25));
+      start[p.id]={x:clamp(x+(zone===3||zone===6?0:zone===4||zone===5?.12:-.12),-3.85,3.85),z};
+    }
+    return start;
+  }
+  function offensiveTransition(players,rotation,start){
+    const active=activeSetter(players,rotation),transition=copy(start);
+    for(const p of players){
+      const zone=zoneFor(p,rotation),front=[2,3,4].includes(zone);
+      if(p.id===active?.id)transition[p.id]={x:2.05,z:1.55};
+      else if(p.role==='OH'&&front)transition[p.id]={x:-3.2,z:1.8};
+      else if(p.role==='MB'&&front)transition[p.id]={x:-0.1,z:1.45};
+      else if(p.role==='OPP'&&front)transition[p.id]={x:3.05,z:1.85};
+      else if(['S','S1','S2'].includes(p.role)&&front)transition[p.id]={x:3,z:2.1};
+      else if(front)transition[p.id]={x:-2.8,z:2.25};
+      else transition[p.id]={x:clamp(start[p.id].x*.85,-3.7,3.7),z:7};
+    }
+    return transition;
+  }
+  function formationFrames(players,rotation,phase='receiving',receiveStyle=3){
+    const start=startingFormation(players,rotation,phase,receiveStyle);
+    const transition=offensiveTransition(players,rotation,start);
     const attack=copy(transition);
     const attacker=players.find(p=>p.role==='OH'&&[2,3,4].includes(zoneFor(p,rotation)))||players.find(p=>p.role==='OH');
-    if(attacker) attack[attacker.id]={x:-3.1,z:1.05};
-    const snapshot=(label,positions,ball)=>({label,positions:copy(positions),ball:copy(ball)});
+    if(attacker)attack[attacker.id]={x:-3.1,z:1.05};
+    const snap=(label,positions,ball)=>({label,positions:copy(positions),ball:copy(ball)});
+    if(phase==='serving'){
+      const server=serverFor(players,rotation),sv=start[server.id];
+      const defense=copy(start);
+      defense[server.id]={x:3,z:7.5};
+      for(const p of players){
+        const zone=zoneFor(p,rotation);
+        if(zone===1)continue;
+        defense[p.id]={x:ZONES[zone].x,z:[2,3,4].includes(zone)?1.85:6.65};
+      }
+      return [
+        snap('Serve setup',start,{x:sv.x,y:1.65,z:10.05}),
+        snap('Serve over net',start,{x:sv.x-.4,y:3.5,z:-3.5}),
+        snap('Defensive coverage',defense,{x:-.3,y:2.45,z:-5.1}),
+        snap('Transition to attack',transition,{x:2.1,y:2.6,z:1.8})
+      ];
+    }
+    const passerIds=receivePassers(players,rotation,receiveStyle);
+    const passTarget=players.filter(p=>passerIds.includes(p.id)).sort((a,b)=>Math.abs(start[a.id].x)-Math.abs(start[b.id].x))[0];
+    const pass=copy(start);
+    if(passTarget)pass[passTarget.id]={x:start[passTarget.id].x,z:start[passTarget.id].z-.35};
     return [
-      snapshot('Starting positions',start,{x:1.6,y:1.8,z:8.15}),
-      snapshot('Setter transition',transition,{x:2.0,y:2.65,z:1.9}),
-      snapshot('Attack approach',attack,{x:-2.8,y:3.2,z:.85}),
-      snapshot('Ball over net',attack,{x:-1.6,y:2.3,z:-3.5})
+      snap('Serve receive',start,{x:-1.5,y:2.8,z:-1.1}),
+      snap('First pass',pass,{x:passTarget?start[passTarget.id].x:0,y:1.45,z:passTarget?start[passTarget.id].z:6.5}),
+      snap('Pass to setter',transition,{x:2.05,y:2.85,z:1.65}),
+      snap('Attack approach',attack,{x:-3.0,y:3.2,z:.65})
     ];
   }
   function makeDefault(system='5-1') {
-    const players=makePlayers(system),rotation=1,frames=formationFrames(players,rotation);
-    for(const p of players) Object.assign(p,frames[0].positions[p.id]);
-    return {version:1,name:'My first play',system,rotation,view:'2d',showZones:true,players,frames,frameIndex:0,ball:copy(frames[0].ball),selectedId:null,camera:{az:.58,el:.7,zoom:1}};
+    const players=makePlayers(system),rotation=1,phase='receiving',receiveStyle=3;
+    const frames=formationFrames(players,rotation,phase,receiveStyle);
+    for(const p of players)Object.assign(p,frames[0].positions[p.id]);
+    return {version:2,name:'My first play',system,rotation,phase,receiveStyle,layouts:{},view:'2d',showZones:true,players,frames,frameIndex:0,ball:copy(frames[0].ball),selectedId:null,camera:{az:.58,el:.7,zoom:1}};
   }
   const validFinite = v=>typeof v==='number'&&Number.isFinite(v)&&Math.abs(v)<10000;
   function isValidProject(v) {
@@ -225,6 +299,8 @@
     const o=makeDefault(p.system);
     o.name=String(p.name||'My play').slice(0,60);
     o.rotation=p.rotation;
+    o.phase=p.phase==='serving'?'serving':'receiving';
+    o.receiveStyle=p.receiveStyle===2||p.receiveStyle==='2'?2:3;
     o.view=p.view==='3d'?'3d':'2d';
     o.showZones=p.showZones!==false;
     o.players=p.players.map(v=>({...v,name:String(v.name??v.id).slice(0,36),number:String(v.number??'').slice(0,3),color:ROLE_COLORS[v.role]||'#b9d5e8'}));
@@ -232,11 +308,21 @@
       label:String(f.label).slice(0,40),
       positions:Object.fromEntries(o.players.map(v=>[v.id,{
         x:clamp(f.positions[v.id].x,-4.25,4.25),
-        z:clamp(f.positions[v.id].z,.25,8.75)
+        z:clamp(f.positions[v.id].z,.25,10.7)
       }])),
-      ball:{x:clamp(f.ball.x,-4.35,4.35),y:clamp(f.ball.y,.3,5),z:clamp(f.ball.z,-8.8,8.8)}
+      ball:{x:clamp(f.ball.x,-4.35,4.35),y:clamp(f.ball.y,.3,5),z:clamp(f.ball.z,-8.8,10.7)}
     }));
     o.frameIndex=clamp(Number.isInteger(p.frameIndex)?p.frameIndex:0,0,o.frames.length-1);
+    // Cache each mode + rotation independently. Older (v1) saved plays are still supported.
+    if(p.layouts&&typeof p.layouts==='object'&&!Array.isArray(p.layouts)){
+      for(const [key,slot] of Object.entries(p.layouts).slice(0,18)){
+        if(!/^[1-6]-(serve|receive[23])$/.test(key)||!slot||!isValidProject({...p,frames:slot.frames}))continue;
+        o.layouts[key]={frames:slot.frames.map(f=>({label:String(f.label).slice(0,40),
+          positions:Object.fromEntries(o.players.map(v=>[v.id,{x:clamp(f.positions[v.id].x,-4.25,4.25),z:clamp(f.positions[v.id].z,.25,10.7)}])),
+          ball:{x:clamp(f.ball.x,-4.35,4.35),y:clamp(f.ball.y,.3,5),z:clamp(f.ball.z,-8.8,10.7)}})),
+          frameIndex:clamp(Number.isInteger(slot.frameIndex)?slot.frameIndex:0,0,slot.frames.length-1)};
+      }
+    }
     o.selectedId=p.selectedId==='ball'?'ball':(o.players.some(v=>v.id===p.selectedId)?p.selectedId:null);
     o.camera={az:validFinite(p.camera?.az)?p.camera.az:.58,el:clamp(validFinite(p.camera?.el)?p.camera.el:.7,.22,1.42),zoom:clamp(validFinite(p.camera?.zoom)?p.camera.zoom:1,.56,2.5)};
     setScene(o,o.frames[o.frameIndex]);
@@ -251,7 +337,18 @@
     const frame=state.frames[state.frameIndex];if(!frame)return;
     const s=snapshotCurrent();frame.positions=s.positions;frame.ball=s.ball;
   }
-  function projectData(){return copy({version:1,name:state.name,system:state.system,rotation:state.rotation,view:state.view,showZones:state.showZones,players:state.players,frames:state.frames,frameIndex:state.frameIndex,selectedId:state.selectedId,camera:state.camera});}
+  function layoutKey(rotation=state.rotation,phase=state.phase,style=state.receiveStyle){return `${rotation}-${phase==='serving'?'serve':`receive${style}`}`;}
+  function rememberLayout(){saveActiveFrame();state.layouts[layoutKey()]={frames:copy(state.frames),frameIndex:state.frameIndex};}
+  function loadLayout(){
+    const slot=state.layouts[layoutKey()];
+    if(slot&&Array.isArray(slot.frames)&&slot.frames.length>=2){state.frames=copy(slot.frames);state.frameIndex=clamp(slot.frameIndex||0,0,state.frames.length-1);}
+    else{state.frames=formationFrames(state.players,state.rotation,state.phase,state.receiveStyle);state.frameIndex=0;}
+    setScene(state,state.frames[state.frameIndex]);playhead=state.frameIndex/(state.frames.length-1);
+  }
+  function projectData(){
+    const layouts={...state.layouts,[layoutKey()]:{frames:state.frames,frameIndex:state.frameIndex}};
+    return copy({version:2,name:state.name,system:state.system,rotation:state.rotation,phase:state.phase,receiveStyle:state.receiveStyle,layouts,view:state.view,showZones:state.showZones,players:state.players,frames:state.frames,frameIndex:state.frameIndex,selectedId:state.selectedId,camera:state.camera});
+  }
   function saveDraft(){
     clearTimeout(saveTimer);
     try{localStorage.setItem(STORAGE_DRAFT,JSON.stringify(projectData()));$('saveStatus').textContent='Saved on device';}catch{$('saveStatus').textContent='Storage unavailable';}
@@ -267,6 +364,16 @@
   // ----- Controls -----
   function renderControls() {
     $('systemSelect').value=state.system;
+    $('phaseServe').classList.toggle('active',state.phase==='serving');
+    $('phaseReceive').classList.toggle('active',state.phase==='receiving');
+    $('phaseServe').setAttribute('aria-pressed',String(state.phase==='serving'));
+    $('phaseReceive').setAttribute('aria-pressed',String(state.phase==='receiving'));
+    $('receiveOptions').hidden=state.phase!=='receiving';
+    $('receiveStyle').value=String(state.receiveStyle);
+    $('phaseDescription').textContent=state.phase==='serving'
+      ?'Serving: zone 1 serves from behind the end line. Watch serve flight, defensive coverage, and transition.'
+      :`Receiving: ${state.receiveStyle} suggested passers are highlighted. Players start in rotational order, then transition after the first pass.`;
+    $('phaseTag').textContent=state.phase==='serving'?'SERVING':'RECEIVING';
     $('rotationNumber').textContent=String(state.rotation).padStart(2,'0');
     $('systemTag').textContent=state.system.replace('-','–')+' SYSTEM';
     $('rotationTag').textContent='ROTATION '+String(state.rotation).padStart(2,'0');
@@ -290,11 +397,16 @@
     for(const p of [...state.players].sort((a,b)=>zoneFor(a,state.rotation)-zoneFor(b,state.rotation))){
       const b=document.createElement('button');b.className='lineup-item'+(state.selectedId===p.id?' active':'');
       const active=p.id===activeSetter(state.players,state.rotation)?.id;
-      b.innerHTML=`<span class="player-number" style="background:${p.color}">${escapeHtml(p.number)}</span><span class="player-desc"><strong>${escapeHtml(p.name)}</strong><small>${escapeHtml(roleName(p.role))}${active?' · Active setter':''}</small></span><span class="zone-badge">Z${zoneFor(p,state.rotation)}</span>`;
+      const action=state.phase==='serving'&&zoneFor(p,state.rotation)===1?' · SERVER':state.phase==='receiving'&&receivePassers(state.players,state.rotation,state.receiveStyle).includes(p.id)?' · PASSER':'';
+      b.innerHTML=`<span class="player-number" style="background:${p.color}">${escapeHtml(p.number)}</span><span class="player-desc"><strong>${escapeHtml(p.name)}</strong><small>${escapeHtml(roleName(p.role))}${active?' · Active setter':''}${action}</small></span><span class="zone-badge">Z${zoneFor(p,state.rotation)}</span>`;
       b.onclick=()=>selectPlayer(p.id);list.appendChild(b);
     }
     const a=activeSetter(state.players,state.rotation);
-    $('setterNote').textContent=a?`Active setter: ${a.name} (zone ${zoneFor(a,state.rotation)}). Positions are editable; the rotation order remains correct.`:'Move players by dragging them on the court.';
+    const server=serverFor(state.players,state.rotation);
+    const passers=receivePassers(state.players,state.rotation,state.receiveStyle);
+    $('setterNote').textContent=state.phase==='serving'
+      ?`Server: ${server.name} (zone 1). ${a?`Active setter: ${a.name}.`:''} Move the server to adjust the serve location.`
+      :`Suggested passers: ${state.players.filter(p=>passers.includes(p.id)).map(p=>p.name).join(', ')}. ${a?`Active setter: ${a.name}.`:''} Drag to customize.`;
   }
   function renderInspector(){
     const root=$('playerInspector');root.replaceChildren();
@@ -340,13 +452,22 @@
   function selectFrame(i){stopPlayback();state.frameIndex=clamp(i,0,state.frames.length-1);setScene(state,state.frames[state.frameIndex]);playhead=state.frameIndex/(state.frames.length-1);renderFrames();draw();requestSave();}
   function changeRotation(r){
     if(r===state.rotation)return;
-    stopPlayback();state.rotation=r;state.frames=formationFrames(state.players,r);state.frameIndex=0;playhead=0;setScene(state,state.frames[0]);renderControls();requestSave();toast(`Rotation ${r} loaded · keyframes reset`);
+    stopPlayback();setScene(state,state.frames[state.frameIndex]);rememberLayout();state.rotation=r;loadLayout();renderControls();requestSave();toast(`Rotation ${r} · ${state.phase} positions`);
+  }
+  function changePhase(phase){
+    if(phase===state.phase)return;
+    stopPlayback();setScene(state,state.frames[state.frameIndex]);rememberLayout();state.phase=phase;loadLayout();renderControls();requestSave();toast(`${phase==='serving'?'Serving':'Receiving'} formation loaded`);
+  }
+  function changeReceiveStyle(style){
+    if(style===state.receiveStyle)return;
+    stopPlayback();setScene(state,state.frames[state.frameIndex]);rememberLayout();state.receiveStyle=style;loadLayout();renderControls();requestSave();toast(`${style}-passer formation loaded`);
   }
   function changeSystem(system){
     if(system===state.system)return;
     if(!confirm(`Switch to a ${system} offense? This resets your lineup and keyframes. Save your current play first if you want to keep it.`)){$('systemSelect').value=state.system;return;}
-    const name=state.name,view=state.view,cam=copy(state.camera);
-    state=makeDefault(system);state.name=name;state.view=view;state.camera=cam;currentSavedId=null;playhead=0;stopPlayback();renderControls();requestSave();toast(`Switched to ${system} system`);
+    const name=state.name,view=state.view,cam=copy(state.camera),phase=state.phase,receiveStyle=state.receiveStyle;
+    state=makeDefault(system);state.name=name;state.view=view;state.camera=cam;state.phase=phase;state.receiveStyle=receiveStyle;
+    state.frames=formationFrames(state.players,state.rotation,phase,receiveStyle);setScene(state,state.frames[0]);currentSavedId=null;playhead=0;stopPlayback();renderControls();requestSave();toast(`Switched to ${system} system`);
   }
   function addFrame(){stopPlayback();saveActiveFrame();const s=snapshotCurrent();state.frames.splice(state.frameIndex+1,0,{label:`Custom movement ${state.frames.length-2}`,positions:s.positions,ball:s.ball});state.frameIndex++;playhead=state.frameIndex/(state.frames.length-1);renderFrames();requestSave();toast('Keyframe added — now drag objects to their new positions');}
   function removeFrame(i){if(state.frames.length<=2)return;stopPlayback();state.frames.splice(i,1);state.frameIndex=clamp(state.frameIndex>=i?state.frameIndex-1:state.frameIndex,0,state.frames.length-1);setScene(state,state.frames[state.frameIndex]);playhead=state.frameIndex/(state.frames.length-1);renderFrames();draw();requestSave();}
@@ -386,10 +507,12 @@
   function openSaved(id){if(!id||!savedPlays[id]||!isValidProject(savedPlays[id].project))return;stopPlayback();state=normalizeProject(savedPlays[id].project);currentSavedId=id;playhead=state.frameIndex/(state.frames.length-1);renderControls();saveDraft();toast('Saved play opened');}
   function newPlay(){
     if(!confirm('Start a fresh play? Your current draft will be replaced. Save or export it first if you want to keep it.'))return;
-    stopPlayback();const system=state.system,view=state.view;state=makeDefault(system);state.view=view;playhead=0;currentSavedId=null;renderControls();saveDraft();toast('New play created');
+    stopPlayback();const system=state.system,view=state.view,phase=state.phase,receiveStyle=state.receiveStyle;
+    state=makeDefault(system);state.view=view;state.phase=phase;state.receiveStyle=receiveStyle;
+    state.frames=formationFrames(state.players,state.rotation,phase,receiveStyle);setScene(state,state.frames[0]);playhead=0;currentSavedId=null;renderControls();saveDraft();toast('New play created');
   }
   function exportPlay(){
-    const json=JSON.stringify({format:'rotation-studio',version:1,exportedAt:new Date().toISOString(),project:projectData()},null,2);
+    const json=JSON.stringify({format:'rotation-studio',version:2,exportedAt:new Date().toISOString(),project:projectData()},null,2);
     const blob=new Blob([json],{type:'application/json'});const url=URL.createObjectURL(blob);
     const a=document.createElement('a');a.href=url;a.download=(state.name.replace(/[^a-z0-9_-]+/gi,'-').replace(/^-|-$/g,'')||'rotation-play')+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('JSON project exported');
   }
@@ -409,16 +532,16 @@
   const cross=(a,b)=>V(a.y*b.z-a.z*b.y,a.z*b.x-a.x*b.z,a.x*b.y-a.y*b.x);
   const norm=a=>{const n=Math.hypot(a.x,a.y,a.z)||1;return scale(a,1/n);};
   function getTopdown(){
-    const s=Math.min(size.w*.77/9,size.h*.78/11)*state.camera.zoom;
-    return {scale:s,cx:size.w*.5,top:(size.h-11*s)*.5,minZ:-1.5};
+    const s=Math.min(size.w*.77/9,size.h*.78/12.8)*state.camera.zoom;
+    return {scale:s,cx:size.w*.5,top:(size.h-12.8*s)*.5,minZ:-1.7};
   }
   function project2(x,y,z){const t=rendererCache.topdown;return {x:t.cx+x*t.scale,y:t.top+(z-t.minZ)*t.scale - y*.15*t.scale,depth:1,sc:t.scale};}
   function getCamera(){
-    const az=state.camera.az,el=state.camera.el,dist=29/state.camera.zoom;
-    const target=V(0,.75,.1);
+    const az=state.camera.az,el=state.camera.el,dist=(state.phase==='serving'?40:29)/state.camera.zoom;
+    const target=V(0,.75,state.phase==='serving'?1.6:.1);
     const pos=add(target,V(Math.sin(az)*Math.cos(el)*dist,Math.sin(el)*dist,Math.cos(az)*Math.cos(el)*dist));
     const forward=norm(sub(target,pos)),right=norm(cross(forward,V(0,1,0))),up=norm(cross(right,forward));
-    return {pos,forward,right,up,f:Math.min(size.w*1.22,size.h*1.95),centerX:size.w*.5,centerY:size.h*.455};
+    return {pos,forward,right,up,f:Math.min(size.w*1.22,size.h*1.95),centerX:size.w*.5,centerY:size.h*(state.phase==='serving'?.405:.455)};
   }
   function project3(x,y,z){
     const c=rendererCache.cam,relative=sub(V(x,y,z),c.pos),depth=dot(relative,c.forward);
@@ -518,6 +641,10 @@
   function drawPlayer2(p){
     const pos=point(p.x,0,p.z),r=clamp(rendererCache.topdown.scale*.47,13,22),active=p.id===state.selectedId;
     if(active){circle(pos.x,pos.y,r+8,'#fff7e818','#ffe1a0',2.1);circle(pos.x,pos.y,r+12,null,'#ffe1a05b',1.1);}
+    if(!playing&&state.frameIndex===0){
+      const highlighted=state.phase==='serving'?zoneFor(p,state.rotation)===1:receivePassers(state.players,state.rotation,state.receiveStyle).includes(p.id);
+      if(highlighted){circle(pos.x,pos.y,r+6,null,'#ffd782',2.3);textAt(state.phase==='serving'?'SERVER':'PASS',{x:pos.x,y:pos.y-r-13},'#ffe09e','800 9px system-ui');}
+    }
     circle(pos.x+2,pos.y+4,r+1,'#09233370');circle(pos.x,pos.y,r,p.color,'#f7faf3',2.2);
     circle(pos.x-r*.36,pos.y-r*.4,r*.23,'#ffffff60');
     textAt(p.number||'•',pos,'#172b3b',`800 ${Math.max(11,r*.83)}px system-ui`);
@@ -542,6 +669,10 @@
     circle(head.x,head.y,clamp(k*.2,4.3,14),'#f3c4a0','#ffe5c5',.9);
     textAt(p.number,{x:hip.x,y:(torsoTop.y+hip.y)*.5},'#152b37',`800 ${clamp(k*.29,8,14)}px system-ui`);
     if(p.id===state.selectedId){circle(foot.x,foot.y,clamp(k*.54,13,28),null,'#ffe0a4',2.4);circle(head.x,head.y,clamp(k*.28,7,19),null,'#ffe0a45a',1.6);}
+    if(!playing&&state.frameIndex===0){
+      const highlighted=state.phase==='serving'?zoneFor(p,state.rotation)===1:receivePassers(state.players,state.rotation,state.receiveStyle).includes(p.id);
+      if(highlighted){circle(foot.x,foot.y,clamp(k*.6,15,29),null,'#ffe0a4',2.2);textAt(state.phase==='serving'?'SERVER':'PASS',point(x,2.75,z),'#ffe0a4','800 9px system-ui');}
+    }
     const label=point(x,2.35,z),name=String(p.name||p.id).slice(0,13);
     ctx.font='700 11px system-ui';const tw=ctx.measureText(name).width;
     ctx.fillStyle='#0c2636e6';ctx.beginPath();roundedRect(label.x-tw/2-7,label.y-10,tw+14,20,5);ctx.fill();
@@ -618,10 +749,10 @@
       const q=worldFromScreen(p.x,p.y,height);
       if(q){
         if(pointerMode.type==='ball'){
-          state.ball.x=clamp(q.x,-4.35,4.35);state.ball.z=clamp(q.z,-8,8.8);
+          state.ball.x=clamp(q.x,-4.35,4.35);state.ball.z=clamp(q.z,-8.8,10.7);
         }else{
           const player=state.players.find(v=>v.id===pointerMode.id);
-          if(player){player.x=clamp(q.x,-4.25,4.25);player.z=clamp(q.z,.25,8.75);}
+          if(player){player.x=clamp(q.x,-4.25,4.25);player.z=clamp(q.z,.25,10.7);}
         }
         saveActiveFrame();draw();requestSave();
       }
@@ -645,13 +776,17 @@
   $('view3d').onclick=()=>{state.view='3d';renderControls();requestSave();};
   $('showZones').onchange=e=>{state.showZones=e.target.checked;draw();requestSave();};
   $('systemSelect').onchange=e=>changeSystem(e.target.value);
+  $('phaseServe').onclick=()=>changePhase('serving');
+  $('phaseReceive').onclick=()=>changePhase('receiving');
+  $('receiveStyle').onchange=e=>changeReceiveStyle(Number(e.target.value));
   $('prevRotation').onclick=()=>changeRotation(state.rotation===1?6:state.rotation-1);
   $('nextRotation').onclick=()=>changeRotation(state.rotation===6?1:state.rotation+1);
   $('resetCamera').onclick=()=>{state.camera={az:.58,el:.7,zoom:1};draw();requestSave();toast('Court view reset');};
   $('resetPlayers').onclick=()=>{
     if(!confirm('Reset all player positions and animation frames for this rotation? Your player names and jersey numbers will stay the same.'))return;
     stopPlayback();
-    state.frames=formationFrames(state.players,state.rotation);
+    delete state.layouts[layoutKey()];
+    state.frames=formationFrames(state.players,state.rotation,state.phase,state.receiveStyle);
     state.frameIndex=0;playhead=0;state.camera={az:.58,el:.7,zoom:1};
     setScene(state,state.frames[0]);
     renderControls();requestSave();toast('All six players reset to this rotation');
@@ -691,7 +826,7 @@
       const msg=$('fallbackMessage');if(msg)msg.textContent='Interactive display failed. Please open this page in Safari or Chrome, or try Reset player positions.';}
   });
   // Public, read-only-ish diagnostic API for basic tests and power users.
-  window.RotationStudio={getState:()=>projectData(),zoneFor:(id,rotation=state.rotation)=>{const p=state.players.find(v=>v.id===id);return p?zoneFor(p,rotation):null;}};
+  window.RotationStudio={getState:()=>projectData(),zoneFor:(id,rotation=state.rotation)=>{const p=state.players.find(v=>v.id===id);return p?zoneFor(p,rotation):null;},setPhase:changePhase,setReceiveStyle:changeReceiveStyle,setRotation:changeRotation};
   playhead=state.frameIndex/(state.frames.length-1);
   renderControls();resize();
 })();
