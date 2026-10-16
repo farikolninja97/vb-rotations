@@ -9,10 +9,10 @@
   <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiB2aWV3Qm94PSIwIDAgMTI4IDEyOCI+PHJlY3Qgd2lkdGg9IjEyOCIgaGVpZ2h0PSIxMjgiIHJ4PSIyNyIgZmlsbD0iIzBlMWIzMSIvPjxyZWN0IHg9IjE5IiB5PSIxOCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkyIiByeD0iOCIgZmlsbD0iIzFkNzI3OSIgc3Ryb2tlPSIjZjRiZTc5IiBzdHJva2Utd2lkdGg9IjQiLz48cGF0aCBkPSJNMTkgNjRoOTBNMTkgNDFoOTBNMTkgODdoOTAiIHN0cm9rZT0iI2I4ZWJlNyIgc3Ryb2tlLXdpZHRoPSIzIi8+PGNpcmNsZSBjeD0iNjQiIGN5PSI3MiIgcj0iMjIiIGZpbGw9IiNmZmNmODMiIHN0cm9rZT0iI2ZmZjJkNiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBhdGggZD0iTTY0IDUwYzQgMTUgMiAzMS02IDQyTTQ3IDYxcTE3IDEyIDM5IDJNNDcgODVxMTctMTIgMzYtOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYTM1ZjM0IiBzdHJva2Utd2lkdGg9IjMiLz48L3N2Zz4K" type="image/svg+xml">
   <style>
 :root{--bg:#091322;--surface:#101e31;--surface2:#15243a;--surface3:#1a2d43;--edge:#263a50;--text:#ebf4f7;--muted:#91a7bd;--dim:#678199;--accent:#f6bf7e;--teal:#61d5cf;--red:#f48c91;--radius:15px;--shadow:0 18px 48px rgba(3,8,20,.21)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% -20%,#1b3146 0%,transparent 48%),var(--bg);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.75}p,h1,h2{margin:0}h2{font-size:18px;letter-spacing:-.6px;font-weight:750}.app-shell{max-width:1560px;padding:0 32px;margin:0 auto}.app-header{height:87px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #213349;gap:20px}.brand{display:flex;align-items:center;gap:12px}.brand-icon{width:42px;height:42px;border-radius:12px;background:#204e5c;display:grid;place-items:center;border:1px solid #527d83;box-shadow:inset 0 0 0 3px #16313b}.brand-icon span{color:#f9ce91;font-size:31px;line-height:1}.brand strong{display:block;font-size:17px;line-height:1.1;letter-spacing:1.3px}.brand strong span{color:var(--accent)}.brand small{display:block;font-size:9px;letter-spacing:2.4px;color:var(--muted);margin-top:5px;font-weight:750}.header-actions{display:flex;align-items:center;gap:10px}.storage-indicator{font-size:12px;color:#95b5bd;margin-right:13px;display:inline-flex;align-items:center;gap:8px}.status-light,.live-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(97,213,207,.12)}.btn{border:1px solid transparent;padding:10px 15px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:9px;font-weight:700;transition:background .15s,transform .15s;white-space:nowrap;font-size:12px}.btn:hover{transform:translateY(-1px)}.btn svg{width:15px;height:15px}.btn-ghost{border-color:var(--edge);color:#d6e4ea;background:#142238}.btn-ghost:hover,.btn-secondary:hover{background:#263a4e}.btn-accent{background:var(--accent);color:#112437}.btn-accent:hover{background:#ffd49c}.btn-secondary{background:#21354a;border-color:#345067;color:#dcecf1}.btn-danger{color:#f49a9e;background:#322333;border-color:#513142}.btn-danger:hover{background:#49303d}.page-head{display:flex;align-items:end;justify-content:space-between;gap:24px;padding:34px 0 26px}.eyebrow,.section-overline{font-size:10px;letter-spacing:2.3px;color:var(--teal);font-weight:850}.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}.eyebrow-line{height:2px;width:20px;background:var(--teal)}.vsep{color:#657388}.page-head h1{font-size:clamp(28px,3vw,39px);line-height:1.18;letter-spacing:-1.5px;font-weight:810}.page-head h1 em{color:var(--accent);font-style:normal}.page-head p{color:var(--muted);margin-top:9px;font-size:13px}.view-switch{display:flex;align-items:center;border:1px solid #2f485a;background:#122136;padding:4px;border-radius:11px;gap:2px}.view-switch button{background:transparent;color:#9cb0c3;padding:10px 14px;border:0;border-radius:8px;font-size:12px;font-weight:750;display:flex;align-items:center;gap:8px}.view-switch button.active{background:#24485a;color:#e9ffff;box-shadow:0 2px 12px #06121f}.view-switch svg{width:16px;height:16px}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 335px;align-items:start;gap:20px}.left-stack,.right-stack{display:flex;flex-direction:column;gap:19px;min-width:0}.court-panel,.timeline-panel,.control-panel,.lineup-panel,.inspector-panel,.project-panel{border:1px solid var(--edge);background:linear-gradient(160deg,#13233a,#0f1d2e);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.panel-bar{height:53px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #304252;background:#15263b}.court-live{font-size:10px;font-weight:850;letter-spacing:1.5px;display:flex;align-items:center;gap:11px;color:#d4e7e8}.court-live #courtModeText{color:#7199ab}.divider-tiny{color:#3b5268}.bar-right{display:flex;align-items:center;gap:13px}.toggle-label{display:flex;align-items:center;gap:8px;font-weight:650;color:#a6b8c6;font-size:11px;cursor:pointer}.toggle-label input{position:absolute;opacity:0;pointer-events:none}.mini-toggle{width:30px;height:17px;display:inline-block;border-radius:100px;background:#34475a;position:relative;transition:background .15s}.mini-toggle:before{content:'';position:absolute;top:3px;left:3px;width:11px;height:11px;border-radius:50%;background:#c1ccd4;transition:transform .15s}.toggle-label input:checked+.mini-toggle{background:#287e87}.toggle-label input:checked+.mini-toggle:before{transform:translateX(13px);background:#bdf6ec}.icon-button{display:grid;place-items:center;background:transparent;border:0;color:#93afbd;padding:5px}.icon-button:hover{color:white}.court-stage{position:relative;height:565px;min-height:330px;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#284359,#102637 64%,#102131);touch-action:none;user-select:none}.court-stage canvas{display:block;position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab}.court-stage canvas.dragging{cursor:grabbing}.court-overlay-top{position:absolute;top:16px;left:18px;display:flex;gap:7px;pointer-events:none}.court-overlay-top span{padding:5px 9px;border:1px solid #708c93aa;border-radius:5px;background:#0d2633cc;color:#e0f8f7;letter-spacing:1.5px;font-size:9px;font-weight:800}.court-overlay-top span+span{border-color:#d8a16d99;color:#ffd198}.court-side-label{position:absolute;top:60px;left:21px;font-size:10px;letter-spacing:2px;color:#a3cdd2;text-shadow:0 2px 3px #123;pointer-events:none}.court-hint{position:absolute;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;color:#d9eeee;background:#0d2937d9;border:1px solid #40616b;padding:7px 12px;border-radius:30px;pointer-events:none}.court-hint span{color:var(--accent)}.zoom-tools{position:absolute;right:14px;bottom:17px;display:flex;flex-direction:column;gap:5px}.zoom-tools button{width:29px;height:29px;display:grid;place-items:center;border:1px solid #56737c;background:#143747e3;color:#dcf5f3;border-radius:6px;font-size:20px;line-height:1;touch-action:manipulation}.zoom-tools button:hover{background:#22546a}.court-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:49px;padding:12px 18px;font-size:10px;color:#a6bac7;background:#132337}.court-footer>div{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.legend-dot{width:9px;height:9px;border-radius:100%;display:inline-block;margin-left:5px}.legend-dot.setter{background:#f4b36a}.legend-dot.hitter{background:#72c8f5}.legend-dot.middle{background:#97dfb7}.legend-dot.opposite{background:#c69ef7}.foot-hint{color:#788fa1;text-align:right}.timeline-panel{padding:21px}.section-title,.lineup-heading{display:flex;align-items:center;justify-content:space-between;gap:14px}.section-title h2,.lineup-heading h2{margin-top:3px}.right-inline{display:flex;align-items:center;gap:12px}.help-pill,.pill{font-size:9px;letter-spacing:.35px;background:#233c4e;border:1px solid #36546a;border-radius:999px;padding:4px 9px;color:#b5d2d6}.frame-list{display:flex;overflow-x:auto;gap:9px;padding:19px 0 15px;scrollbar-width:thin;scrollbar-color:#4c6475 transparent}.frame{flex:1;min-width:118px;max-width:180px;position:relative;background:#162a40;border:1px solid #2f4b62;border-radius:11px;text-align:left;padding:13px 12px 11px;color:#d6e4ee}.frame:hover{border-color:#698b9c}.frame.active{background:#1b3b4b;border-color:#69c4c4;box-shadow:inset 0 0 0 1px #69c4c4aa}.frame-index{display:flex;align-items:center;gap:7px;font-size:9px;color:#85a5b8;font-weight:750;letter-spacing:1.4px}.frame-index .frame-node{width:9px;height:9px;border:2px solid #65919d;border-radius:50%}.frame.active .frame-node{background:#77ded0;border-color:#77ded0}.frame-name{display:block;margin-top:11px;font-weight:730;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.frame-time{font-size:10px;color:#8fa3b5;margin-top:3px}.frame-remove{border:0;color:#9aabb9;background:transparent;position:absolute;right:5px;top:4px;padding:4px;border-radius:4px;font-size:16px;line-height:1;visibility:hidden}.frame:hover .frame-remove,.frame.active .frame-remove{visibility:visible}.frame-remove:hover{color:#ffa5a5;background:#563d43}.timeline-controls{border-top:1px solid #2b4155;display:flex;align-items:center;gap:12px;padding-top:15px}.play-button{border:0;background:var(--accent);color:#102235;width:39px;height:39px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}.play-button svg{width:17px;height:17px;stroke-width:2.5}.transport-button{border:0;background:#20384d;color:#b5d5df;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}.transport-button svg{width:16px;height:16px}.scrubber{min-width:40px;flex:1;align-self:center}.scrubber input{width:100%;display:block;margin:3px 0 1px;accent-color:var(--teal);height:16px;cursor:pointer}.time-labels{display:flex;justify-content:space-between;color:#819aab;font-size:10px;font-variant-numeric:tabular-nums}.speed-control{display:flex;align-items:center;gap:6px;font-size:11px;color:#9ab0c0;white-space:nowrap}.speed-control select{background:#1f3448;border:1px solid #395169;border-radius:5px;padding:6px;color:#e2f0f1}.timeline-tip{color:#8ea7b6;font-size:11px;margin-top:14px}.right-stack section{padding:20px}.control-panel h2,.inspector-panel h2,.project-panel h2{margin:4px 0 19px}.field-caption{font-size:9px;color:#91abb9;letter-spacing:1.2px;font-weight:850;display:block;margin:15px 0 7px}.full-select,.text-input{border:1px solid #365063;background:#1b3044;color:#eaf5f8;border-radius:8px;width:100%;padding:10px 11px;min-height:41px;outline:none;font-size:12px}.full-select:focus,.text-input:focus{border-color:var(--teal)}.rotation-controls{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid #2d455a;background:#122436;border-radius:10px;margin-top:17px;padding:14px}.rotation-controls>button{width:39px;height:39px;background:#27445a;color:#cfebed;border:1px solid #426278;border-radius:9px;display:grid;place-items:center}.rotation-controls>button:hover{background:#375d73}.rotation-display{text-align:center}.rotation-display small{font-size:9px;letter-spacing:1.4px;color:#96b3c4;font-weight:800}.rotation-display div{line-height:1.1;margin-top:2px}.rotation-display #rotationNumber{font-size:37px;font-weight:800;letter-spacing:-1px;color:var(--accent)}.rotation-denom{font-size:17px;color:#748d9e;font-weight:700;margin-left:5px}.rotation-dots{display:flex;justify-content:center;gap:8px;margin:15px 0 5px}.rotation-dots button{width:24px;height:24px;background:#1c344a;border:1px solid #486279;color:#9ebcc8;border-radius:6px;font-size:10px;font-weight:850}.rotation-dots button.active{background:var(--accent);color:#1c2b36;border-color:var(--accent)}.context-note{background:#15343d;border-left:2px solid #56b7b9;font-size:11px;color:#b0d0d4;line-height:1.6;padding:11px 12px;margin-top:13px;border-radius:0 6px 6px 0}.pill{white-space:nowrap;color:#b9d9cc;border-color:#2f605e;background:#1e4041}.lineup-list{display:grid;gap:5px;margin:15px 0 11px}.lineup-item{display:flex;align-items:center;gap:10px;border:1px solid transparent;background:transparent;width:100%;border-radius:8px;padding:6px;text-align:left;color:inherit}.lineup-item:hover{background:#20374b}.lineup-item.active{border-color:#4d7a89;background:#223e4f}.player-number{width:31px;height:31px;display:grid;place-items:center;border-radius:9px;font-weight:800;font-size:13px;color:#102538;flex-shrink:0}.player-desc{flex:1;min-width:0}.player-desc strong{font-size:12px;display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.player-desc small{font-size:10px;color:#86a5b8}.zone-badge{border-radius:6px;background:#20354a;border:1px solid #3e5870;color:#c2d8df;padding:3px 6px;font-weight:750;font-size:10px}.setter-note{border-top:1px solid #2d4257;padding-top:12px;color:#9ebbc4;font-size:11px;line-height:1.7}.inspector-inner .muted{font-size:12px;color:#839aaa;line-height:1.65}.inspector-person{display:flex;align-items:center;gap:12px;margin-bottom:14px}.inspector-person .player-number{width:43px;height:43px;font-size:19px}.inspector-person strong{font-size:14px}.inspector-person small{display:block;color:#91aabd;font-size:11px}.inspector-grid{display:grid;grid-template-columns:1fr 105px;gap:10px}.inspector-grid .field-caption{margin-top:4px}.inspector-extra{margin-top:13px;background:#1a3146;border:1px solid #365166;padding:10px;border-radius:8px;color:#aac4cc;font-size:11px}.project-panel h2{margin-bottom:8px}.project-panel .field-caption{margin-top:14px}.project-buttons{display:flex;gap:6px;margin-top:12px}.project-buttons .btn{padding:9px 10px;flex:1;font-size:11px}.local-tip{border-top:1px solid #304155;margin-top:16px;padding-top:12px;font-size:11px;line-height:1.6;color:#809dad}.app-footer{border-top:1px solid #1d3044;padding:26px 0 34px;margin-top:30px;display:flex;justify-content:space-between;gap:10px;color:#72899f;font-size:9px;font-weight:850;letter-spacing:1.25px}.footer-sep{color:var(--teal);margin:0 8px}.footer-ball{color:var(--accent);font-size:15px;margin-left:5px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:#e1f4e9;color:#123632;border-radius:10px;padding:12px 18px;box-shadow:0 10px 35px #030b12a8;font-size:12px;font-weight:750;pointer-events:none;opacity:0;transition:opacity .2s,transform .2s;z-index:20;max-width:90vw;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% -20%,#1b3146 0%,transparent 48%),var(--bg);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.75}p,h1,h2{margin:0}h2{font-size:18px;letter-spacing:-.6px;font-weight:750}.app-shell{max-width:1560px;padding:0 32px;margin:0 auto}.app-header{height:87px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #213349;gap:20px}.brand{display:flex;align-items:center;gap:12px}.brand-icon{width:42px;height:42px;border-radius:12px;background:#204e5c;display:grid;place-items:center;border:1px solid #527d83;box-shadow:inset 0 0 0 3px #16313b}.brand-icon span{color:#f9ce91;font-size:31px;line-height:1}.brand strong{display:block;font-size:17px;line-height:1.1;letter-spacing:1.3px}.brand strong span{color:var(--accent)}.brand small{display:block;font-size:9px;letter-spacing:2.4px;color:var(--muted);margin-top:5px;font-weight:750}.header-actions{display:flex;align-items:center;gap:10px}.storage-indicator{font-size:12px;color:#95b5bd;margin-right:13px;display:inline-flex;align-items:center;gap:8px}.status-light,.live-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(97,213,207,.12)}.btn{border:1px solid transparent;padding:10px 15px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:9px;font-weight:700;transition:background .15s,transform .15s;white-space:nowrap;font-size:12px}.btn:hover{transform:translateY(-1px)}.btn svg{width:15px;height:15px}.btn-ghost{border-color:var(--edge);color:#d6e4ea;background:#142238}.btn-ghost:hover,.btn-secondary:hover{background:#263a4e}.btn-accent{background:var(--accent);color:#112437}.btn-accent:hover{background:#ffd49c}.btn-secondary{background:#21354a;border-color:#345067;color:#dcecf1}.btn-danger{color:#f49a9e;background:#322333;border-color:#513142}.btn-danger:hover{background:#49303d}.page-head{display:flex;align-items:end;justify-content:space-between;gap:24px;padding:34px 0 26px}.eyebrow,.section-overline{font-size:10px;letter-spacing:2.3px;color:var(--teal);font-weight:850}.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}.eyebrow-line{height:2px;width:20px;background:var(--teal)}.vsep{color:#657388}.page-head h1{font-size:clamp(28px,3vw,39px);line-height:1.18;letter-spacing:-1.5px;font-weight:810}.page-head h1 em{color:var(--accent);font-style:normal}.page-head p{color:var(--muted);margin-top:9px;font-size:13px}.view-switch{display:flex;align-items:center;border:1px solid #2f485a;background:#122136;padding:4px;border-radius:11px;gap:2px}.view-switch button{background:transparent;color:#9cb0c3;padding:10px 14px;border:0;border-radius:8px;font-size:12px;font-weight:750;display:flex;align-items:center;gap:8px}.view-switch button.active{background:#24485a;color:#e9ffff;box-shadow:0 2px 12px #06121f}.view-switch svg{width:16px;height:16px}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 335px;align-items:start;gap:20px}.left-stack,.right-stack{display:flex;flex-direction:column;gap:19px;min-width:0}.court-panel,.timeline-panel,.control-panel,.lineup-panel,.inspector-panel,.project-panel{border:1px solid var(--edge);background:linear-gradient(160deg,#13233a,#0f1d2e);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.panel-bar{height:53px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #304252;background:#15263b}.court-live{font-size:10px;font-weight:850;letter-spacing:1.5px;display:flex;align-items:center;gap:11px;color:#d4e7e8}.court-live #courtModeText{color:#7199ab}.divider-tiny{color:#3b5268}.bar-right{display:flex;align-items:center;gap:13px}.toggle-label{display:flex;align-items:center;gap:8px;font-weight:650;color:#a6b8c6;font-size:11px;cursor:pointer}.toggle-label input{position:absolute;opacity:0;pointer-events:none}.mini-toggle{width:30px;height:17px;display:inline-block;border-radius:100px;background:#34475a;position:relative;transition:background .15s}.mini-toggle:before{content:'';position:absolute;top:3px;left:3px;width:11px;height:11px;border-radius:50%;background:#c1ccd4;transition:transform .15s}.toggle-label input:checked+.mini-toggle{background:#287e87}.toggle-label input:checked+.mini-toggle:before{transform:translateX(13px);background:#bdf6ec}.icon-button{display:grid;place-items:center;background:transparent;border:0;color:#93afbd;padding:5px}.icon-button:hover{color:white}.court-stage{position:relative;height:565px;min-height:330px;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#284359,#102637 64%,#102131);touch-action:none;user-select:none}.court-stage canvas{display:block;position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab}.court-stage canvas.dragging{cursor:grabbing}.court-overlay-top{position:absolute;top:16px;left:18px;display:flex;gap:7px;pointer-events:none}.court-overlay-top span{padding:5px 9px;border:1px solid #708c93aa;border-radius:5px;background:#0d2633cc;color:#e0f8f7;letter-spacing:1.5px;font-size:9px;font-weight:800}.court-overlay-top span+span{border-color:#d8a16d99;color:#ffd198}.court-side-label{position:absolute;top:60px;left:21px;font-size:10px;letter-spacing:2px;color:#a3cdd2;text-shadow:0 2px 3px #123;pointer-events:none}.court-hint{position:absolute;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;color:#d9eeee;background:#0d2937d9;border:1px solid #40616b;padding:7px 12px;border-radius:30px;pointer-events:none}.court-hint span{color:var(--accent)}.zoom-tools{position:absolute;right:14px;bottom:17px;display:flex;flex-direction:column;gap:5px}.zoom-tools button{width:29px;height:29px;display:grid;place-items:center;border:1px solid #56737c;background:#143747e3;color:#dcf5f3;border-radius:6px;font-size:20px;line-height:1;touch-action:manipulation}.zoom-tools button:hover{background:#22546a}.court-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:49px;padding:12px 18px;font-size:10px;color:#a6bac7;background:#132337}.court-footer>div{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.legend-dot{width:9px;height:9px;border-radius:100%;display:inline-block;margin-left:5px}.legend-dot.setter{background:#f4b36a}.legend-dot.hitter{background:#72c8f5}.legend-dot.middle{background:#97dfb7}.legend-dot.opposite{background:#c69ef7}.foot-hint{color:#788fa1;text-align:right}.timeline-panel{padding:21px}.section-title,.lineup-heading{display:flex;align-items:center;justify-content:space-between;gap:14px}.section-title h2,.lineup-heading h2{margin-top:3px}.right-inline{display:flex;align-items:center;gap:12px}.help-pill,.pill{font-size:9px;letter-spacing:.35px;background:#233c4e;border:1px solid #36546a;border-radius:999px;padding:4px 9px;color:#b5d2d6}.frame-list{display:flex;overflow-x:auto;gap:9px;padding:19px 0 15px;scrollbar-width:thin;scrollbar-color:#4c6475 transparent}.frame{flex:1;min-width:118px;max-width:180px;position:relative;background:#162a40;border:1px solid #2f4b62;border-radius:11px;text-align:left;padding:13px 12px 11px;color:#d6e4ee}.frame:hover{border-color:#698b9c}.frame.active{background:#1b3b4b;border-color:#69c4c4;box-shadow:inset 0 0 0 1px #69c4c4aa}.frame-index{display:flex;align-items:center;gap:7px;font-size:9px;color:#85a5b8;font-weight:750;letter-spacing:1.4px}.frame-index .frame-node{width:9px;height:9px;border:2px solid #65919d;border-radius:50%}.frame.active .frame-node{background:#77ded0;border-color:#77ded0}.frame-name{display:block;margin-top:11px;font-weight:730;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.frame-time{font-size:10px;color:#8fa3b5;margin-top:3px}.frame-remove{border:0;color:#9aabb9;background:transparent;position:absolute;right:5px;top:4px;padding:4px;border-radius:4px;font-size:16px;line-height:1;visibility:hidden}.frame:hover .frame-remove,.frame.active .frame-remove{visibility:visible}.frame-remove:hover{color:#ffa5a5;background:#563d43}.timeline-controls{border-top:1px solid #2b4155;display:flex;align-items:center;gap:12px;padding-top:15px}.play-button{border:0;background:var(--accent);color:#102235;width:39px;height:39px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}.play-button svg{width:17px;height:17px;stroke-width:2.5}.transport-button{border:0;background:#20384d;color:#b5d5df;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}.transport-button svg{width:16px;height:16px}.scrubber{min-width:40px;flex:1;align-self:center}.scrubber input{width:100%;display:block;margin:3px 0 1px;accent-color:var(--teal);height:16px;cursor:pointer}.time-labels{display:flex;justify-content:space-between;color:#819aab;font-size:10px;font-variant-numeric:tabular-nums}.speed-control{display:flex;align-items:center;gap:6px;font-size:11px;color:#9ab0c0;white-space:nowrap}.speed-control select{background:#1f3448;border:1px solid #395169;border-radius:5px;padding:6px;color:#e2f0f1}.timeline-tip{color:#8ea7b6;font-size:11px;margin-top:14px}.right-stack section{padding:20px}.control-panel h2,.inspector-panel h2,.project-panel h2{margin:4px 0 19px}.field-caption{font-size:9px;color:#91abb9;letter-spacing:1.2px;font-weight:850;display:block;margin:15px 0 7px}.full-select,.text-input{border:1px solid #365063;background:#1b3044;color:#eaf5f8;border-radius:8px;width:100%;padding:10px 11px;min-height:41px;outline:none;font-size:12px}.full-select:focus,.text-input:focus{border-color:var(--teal)}.rotation-controls{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid #2d455a;background:#122436;border-radius:10px;margin-top:17px;padding:14px}.rotation-controls>button{width:39px;height:39px;background:#27445a;color:#cfebed;border:1px solid #426278;border-radius:9px;display:grid;place-items:center}.rotation-controls>button:hover{background:#375d73}.rotation-display{text-align:center}.rotation-display small{font-size:9px;letter-spacing:1.4px;color:#96b3c4;font-weight:800}.rotation-display div{line-height:1.1;margin-top:2px}.rotation-display #rotationNumber{font-size:37px;font-weight:800;letter-spacing:-1px;color:var(--accent)}.rotation-denom{font-size:17px;color:#748d9e;font-weight:700;margin-left:5px}.rotation-dots{display:flex;justify-content:center;gap:8px;margin:15px 0 5px}.rotation-dots button{width:24px;height:24px;background:#1c344a;border:1px solid #486279;color:#9ebcc8;border-radius:6px;font-size:10px;font-weight:850}.rotation-dots button.active{background:var(--accent);color:#1c2b36;border-color:var(--accent)}.context-note{background:#15343d;border-left:2px solid #56b7b9;font-size:11px;color:#b0d0d4;line-height:1.6;padding:11px 12px;margin-top:13px;border-radius:0 6px 6px 0}.pill{white-space:nowrap;color:#b9d9cc;border-color:#2f605e;background:#1e4041}.lineup-list{display:grid;gap:5px;margin:15px 0 11px}.lineup-item{display:flex;align-items:center;gap:10px;border:1px solid transparent;background:transparent;width:100%;border-radius:8px;padding:6px;text-align:left;color:inherit}.lineup-item:hover{background:#20374b}.lineup-item.active{border-color:#4d7a89;background:#223e4f}.player-number{width:31px;height:31px;display:grid;place-items:center;border-radius:9px;font-weight:800;font-size:13px;color:#102538;flex-shrink:0}.player-desc{flex:1;min-width:0}.player-desc strong{font-size:12px;display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.player-desc small{font-size:10px;color:#86a5b8}.zone-badge{border-radius:6px;background:#20354a;border:1px solid #3e5870;color:#c2d8df;padding:3px 6px;font-weight:750;font-size:10px}.setter-note{border-top:1px solid #2d4257;padding-top:12px;color:#9ebbc4;font-size:11px;line-height:1.7}.inspector-inner .muted{font-size:12px;color:#839aaa;line-height:1.65}.inspector-person{display:flex;align-items:center;gap:12px;margin-bottom:14px}.inspector-person .player-number{width:43px;height:43px;font-size:19px}.inspector-person strong{font-size:14px}.inspector-person small{display:block;color:#91aabd;font-size:11px}.inspector-grid{display:grid;grid-template-columns:1fr 105px;gap:10px}.inspector-grid .field-caption{margin-top:4px}.inspector-extra{margin-top:13px;background:#1a3146;border:1px solid #365166;padding:10px;border-radius:8px;color:#aac4cc;font-size:11px}.project-panel h2{margin-bottom:8px}.project-panel .field-caption{margin-top:14px}.project-buttons{display:flex;gap:6px;margin-top:12px}.project-buttons .btn{padding:9px 10px;flex:1;font-size:11px}.playbook-export{width:100%;margin-top:10px;min-height:44px}.local-tip{border-top:1px solid #304155;margin-top:16px;padding-top:12px;font-size:11px;line-height:1.6;color:#809dad}.app-footer{border-top:1px solid #1d3044;padding:26px 0 34px;margin-top:30px;display:flex;justify-content:space-between;gap:10px;color:#72899f;font-size:9px;font-weight:850;letter-spacing:1.25px}.footer-sep{color:var(--teal);margin:0 8px}.footer-ball{color:var(--accent);font-size:15px;margin-left:5px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:#e1f4e9;color:#123632;border-radius:10px;padding:12px 18px;box-shadow:0 10px 35px #030b12a8;font-size:12px;font-weight:750;pointer-events:none;opacity:0;transition:opacity .2s,transform .2s;z-index:20;max-width:90vw;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
 @media(max-width:1180px){.workspace{grid-template-columns:minmax(0,1fr) 310px}.app-shell{padding:0 22px}.court-stage{height:510px}.foot-hint{display:none}.help-pill{display:none}}
 @media(max-width:950px){.workspace{grid-template-columns:1fr}.right-stack{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.court-stage{height:530px}.app-shell{padding:0 18px}.page-head{align-items:start}.inspector-panel,.project-panel{align-self:stretch}}
-@media(max-width:610px){.app-shell{padding:0 12px}.app-header{height:68px}.brand-icon{width:36px;height:36px}.brand strong{font-size:13px;letter-spacing:.9px}.brand small{font-size:7px;letter-spacing:1.35px}.storage-indicator,.header-share{display:none}.header-actions{gap:0}.btn{padding:9px 10px}.page-head{display:block;padding:23px 2px 19px}.page-head h1{font-size:27px;letter-spacing:-.95px}.page-head p{font-size:12px;max-width:340px}.view-switch{margin-top:17px;width:max-content}.view-switch button{padding:9px 11px;font-size:11px}.workspace{gap:13px}.left-stack,.right-stack{gap:13px}.right-stack{grid-template-columns:1fr}.court-stage{height:clamp(380px,95vw,490px)}.court-overlay-top{top:12px;left:11px}.court-side-label{left:12px}.court-hint{font-size:9px;bottom:10px;left:10px;transform:none;padding:6px 9px;max-width:calc(100% - 66px);white-space:normal}.court-footer{padding:10px;min-height:42px}.court-footer>div{gap:5px;font-size:9px}.panel-bar{height:46px;padding:0 12px}.court-live{font-size:9px;letter-spacing:.7px;gap:6px}.timeline-panel{padding:16px}.section-title{align-items:start}.section-title .right-inline{padding-top:7px}.section-title h2{font-size:17px}.frame{min-width:125px;flex:none}.speed-control{font-size:10px}.timeline-controls{gap:8px}.right-stack section{padding:18px}.app-footer{flex-direction:column;gap:8px;align-items:center;text-align:center;margin-top:15px;padding:20px 0 30px}.project-buttons{gap:8px}}
+@media(max-width:610px){.app-shell{padding:0 12px}.app-header{height:68px}.brand-icon{width:36px;height:36px}.brand strong{font-size:13px;letter-spacing:.9px}.brand small{font-size:7px;letter-spacing:1.35px}.storage-indicator{display:none}.app-header{height:auto;min-height:68px;flex-wrap:wrap;align-content:center;row-gap:9px;padding:10px 0 12px}.brand{flex:1 1 100%;min-width:0}.header-actions{gap:8px;width:100%;justify-content:space-between}.header-actions .btn{flex:1;min-height:44px}.header-share{display:inline-flex}.btn{padding:9px 10px}.page-head{display:block;padding:23px 2px 19px}.page-head h1{font-size:27px;letter-spacing:-.95px}.page-head p{font-size:12px;max-width:340px}.view-switch{margin-top:17px;width:max-content}.view-switch button{padding:9px 11px;font-size:11px}.workspace{gap:13px}.left-stack,.right-stack{gap:13px}.right-stack{grid-template-columns:1fr}.court-stage{height:clamp(380px,95vw,490px)}.court-overlay-top{top:12px;left:11px}.court-side-label{left:12px}.court-hint{font-size:9px;bottom:10px;left:10px;transform:none;padding:6px 9px;max-width:calc(100% - 66px);white-space:normal}.court-footer{padding:10px;min-height:42px}.court-footer>div{gap:5px;font-size:9px}.panel-bar{height:46px;padding:0 12px}.court-live{font-size:9px;letter-spacing:.7px;gap:6px}.timeline-panel{padding:16px}.section-title{align-items:start}.section-title .right-inline{padding-top:7px}.section-title h2{font-size:17px}.frame{min-width:125px;flex:none}.speed-control{font-size:10px}.timeline-controls{gap:8px}.right-stack section{padding:18px}.app-footer{flex-direction:column;gap:8px;align-items:center;text-align:center;margin-top:15px;padding:20px 0 30px}.project-buttons{gap:8px}}
 @media(prefers-reduced-motion:reduce){.btn,.toast{transition:none}}
 
 .ball-slider{width:100%;accent-color:#f6bf7e;cursor:pointer;margin:4px 0 2px}.inspector-panel .field-caption span{color:#f8d5a3;float:right;letter-spacing:0}
@@ -37,6 +37,22 @@
 .phase-caption{font-size:10px;line-height:1.35;color:#92afc0;margin:3px 0 13px}
 .court-overlay-top .mode-tag{background:#20465c;border-color:#68c5c4;color:#dcfcf7}
 @media(max-width:550px){.phase-button{min-height:48px}.receive-options{flex-wrap:wrap}}
+.receive-options select{width:210px;max-width:72%}
+/* Manually mark serve-receive passers; accessible both on touch and by keyboard. */
+.manual-passer-tools{background:#13313d;border:1px solid #3b7780;border-radius:10px;margin:0 0 12px;padding:12px;color:#d7eeee}
+.manual-passer-tools[hidden]{display:none}
+.passer-tools-heading{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px}
+.passer-tools-heading>span{display:flex;align-items:center;gap:7px}
+.passer-indicator{display:inline-block;height:13px;width:13px;border:2.5px solid #ffd782;border-radius:50%;box-shadow:0 0 0 3px #ffd78226}
+.manual-passer-tools p{font-size:11px;line-height:1.6;margin:10px 0 8px;color:#b8d6dc}
+.passer-small-btn{background:#21465b;color:#dcf7f0;border:1px solid #5d8591;border-radius:7px;padding:7px 10px;min-height:36px;font-size:11px;font-weight:750;touch-action:manipulation}
+.passer-small-btn:hover{background:#2b5c70}
+.lineup-row{display:flex;align-items:center;gap:6px;width:100%}
+.lineup-row>.lineup-item{width:auto;flex:1;min-width:0}
+.passer-toggle{flex:0 0 76px;height:38px;background:#213b4a;border:1px solid #477080;border-radius:8px;color:#b5d5dd;font-size:11px;font-weight:800;touch-action:manipulation}
+.passer-toggle[aria-pressed="true"]{background:#6c4e28;border-color:#ffce78;color:#fff1cd;box-shadow:inset 0 0 0 1px #e4b76977}
+.passer-toggle:focus-visible{outline:2px solid #ffce78;outline-offset:2px}
+@media(max-width:400px){.passer-toggle{flex-basis:68px}.lineup-row{gap:3px}.lineup-row>.lineup-item{padding:6px 2px}}
   </style>
 
 </head>
@@ -134,7 +150,12 @@
             </div>
             <div class="receive-options" id="receiveOptions">
               <label class="field-caption" for="receiveStyle">PASSERS</label>
-              <select id="receiveStyle" class="full-select"><option value="3">3-player receive</option><option value="2">2-player receive</option></select>
+              <select id="receiveStyle" class="full-select"><option value="3">3-player receive</option><option value="2">2-player receive</option><option value="manual">Manual · choose passers</option></select>
+            </div>
+            <div id="manualPasserTools" class="manual-passer-tools" hidden>
+              <div class="passer-tools-heading"><span><span class="passer-indicator"></span><strong id="manualPasserCount">3 passers selected</strong></span><button id="clearPassers" type="button" class="passer-small-btn">Clear all</button></div>
+              <p>Tap a player on the court to toggle their gold PASS highlight, or use the <b>Pass</b> buttons below in Starting six. Drag players normally to move them.</p>
+              <button id="suggestPassers" class="passer-small-btn" type="button">↺ Restore 3 suggested passers</button>
             </div>
             <p class="phase-explainer" id="phaseDescription">Receiving: players begin in rotational order before the serve, then move into the pass and attack.</p>
             <p class="phase-caption">Each rotation and serve/receive setup keeps its own edited keyframes on this device.</p>
@@ -148,7 +169,7 @@
 
           <section class="inspector-panel"><div class="section-overline">PERSONNEL</div><h2>Player inspector</h2><div id="playerInspector" class="inspector-inner"><p class="muted">Select a player on the court or in the lineup to edit their details.</p></div></section>
 
-          <section class="project-panel"><div class="section-overline">YOUR PLAYBOOK</div><h2>Saved plays</h2><label class="field-caption" for="projectName">PLAY NAME</label><input id="projectName" class="text-input" value="My first play" maxlength="60"><label class="field-caption" for="savedSelect">OPEN SAVED PLAY</label><select id="savedSelect" class="full-select"><option value="">Select a saved play...</option></select><div class="project-buttons"><button class="btn btn-secondary" id="newBtn">New play</button><button class="btn btn-secondary" id="importBtn">Import JSON</button><button class="btn btn-danger" id="deleteBtn" title="Delete selected saved play">Delete</button></div><input type="file" id="importFile" accept=".json,application/json" hidden><p class="local-tip">Autosaved in this browser. Export JSON for a backup or to use on another device.</p></section>
+          <section class="project-panel"><div class="section-overline">YOUR PLAYBOOK</div><h2>Saved plays</h2><label class="field-caption" for="projectName">PLAY NAME</label><input id="projectName" class="text-input" value="My first play" maxlength="60"><label class="field-caption" for="savedSelect">OPEN SAVED PLAY</label><select id="savedSelect" class="full-select"><option value="">Select a saved play...</option></select><div class="project-buttons"><button class="btn btn-secondary" id="newBtn">New play</button><button class="btn btn-secondary" id="importBtn">Import JSON</button><button class="btn btn-danger" id="deleteBtn" title="Delete selected saved play">Delete</button></div><button class="btn btn-ghost playbook-export" id="exportPlaybookBtn" title="Download this play as a JSON backup">Export JSON backup</button><input type="file" id="importFile" accept=".json,application/json" hidden><p class="local-tip">Autosaved in this browser. Export JSON for a backup or to use on another device.</p></section>
         </aside>
       </div>
     </main>
@@ -156,7 +177,7 @@
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script>
-/* Rotation Studio — vanilla JavaScript, zero dependencies. Works as a local HTML file. */
+/* Rotation Studio v5 — mobile-export toolbar fix. Vanilla JS; zero dependencies. */
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
@@ -195,7 +216,12 @@
     return Object.fromEntries(players.map(p=>[p.id,copy(ZONES[zoneFor(p,rotation)])]));
   }
   function serverFor(players,rotation){return players.find(p=>zoneFor(p,rotation)===1);}
-  function receivePassers(players,rotation,receiveStyle=3){
+  function receivePassers(players,rotation,receiveStyle=3,customPassers=null){
+    // An empty custom array intentionally means nobody is highlighted.
+    if(receiveStyle==='manual' && Array.isArray(customPassers)){
+      const valid=new Set(players.map(p=>p.id));
+      return [...new Set(customPassers)].filter(id=>valid.has(id));
+    }
     const ohs=players.filter(p=>p.role==='OH').map(p=>p.id);
     if(receiveStyle===2)return ohs;
     const third=players.filter(p=>p.role!=='OH'&&!['S','S1','S2'].includes(p.role))
@@ -203,14 +229,14 @@
         || Math.abs(zoneFor(a,rotation)-6)-Math.abs(zoneFor(b,rotation)-6))[0];
     return third?[...ohs,third.id]:ohs;
   }
-  function startingFormation(players,rotation,phase='receiving',receiveStyle=3){
+  function startingFormation(players,rotation,phase='receiving',receiveStyle=3,customPassers=null){
     const start=initialPositions(players,rotation);
     if(phase==='serving'){
       const server=serverFor(players,rotation);
       start[server.id]={x:3.05,z:9.75};
       return start;
     }
-    const passers=receivePassers(players,rotation,receiveStyle);
+    const passers=receivePassers(players,rotation,receiveStyle,customPassers);
     const setter=activeSetter(players,rotation);
     for(const p of players){
       const zone=zoneFor(p,rotation),front=[2,3,4].includes(zone),passing=passers.includes(p.id);
@@ -235,8 +261,8 @@
     }
     return transition;
   }
-  function formationFrames(players,rotation,phase='receiving',receiveStyle=3){
-    const start=startingFormation(players,rotation,phase,receiveStyle);
+  function formationFrames(players,rotation,phase='receiving',receiveStyle=3,customPassers=null){
+    const start=startingFormation(players,rotation,phase,receiveStyle,customPassers);
     const transition=offensiveTransition(players,rotation,start);
     const attack=copy(transition);
     const attacker=players.find(p=>p.role==='OH'&&[2,3,4].includes(zoneFor(p,rotation)))||players.find(p=>p.role==='OH');
@@ -258,7 +284,7 @@
         snap('Transition to attack',transition,{x:2.1,y:2.6,z:1.8})
       ];
     }
-    const passerIds=receivePassers(players,rotation,receiveStyle);
+    const passerIds=receivePassers(players,rotation,receiveStyle,customPassers);
     const passTarget=players.filter(p=>passerIds.includes(p.id)).sort((a,b)=>Math.abs(start[a.id].x)-Math.abs(start[b.id].x))[0];
     const pass=copy(start);
     if(passTarget)pass[passTarget.id]={x:start[passTarget.id].x,z:start[passTarget.id].z-.35};
@@ -273,7 +299,7 @@
     const players=makePlayers(system),rotation=1,phase='receiving',receiveStyle=3;
     const frames=formationFrames(players,rotation,phase,receiveStyle);
     for(const p of players)Object.assign(p,frames[0].positions[p.id]);
-    return {version:2,name:'My first play',system,rotation,phase,receiveStyle,layouts:{},view:'2d',showZones:true,players,frames,frameIndex:0,ball:copy(frames[0].ball),selectedId:null,camera:{az:.58,el:.7,zoom:1}};
+    return {version:3,name:'My first play',system,rotation,phase,receiveStyle,manualPassers:{},layouts:{},view:'2d',showZones:true,players,frames,frameIndex:0,ball:copy(frames[0].ball),selectedId:null,camera:{az:.58,el:.7,zoom:1}};
   }
   const validFinite = v=>typeof v==='number'&&Number.isFinite(v)&&Math.abs(v)<10000;
   function isValidProject(v) {
@@ -300,10 +326,18 @@
     o.name=String(p.name||'My play').slice(0,60);
     o.rotation=p.rotation;
     o.phase=p.phase==='serving'?'serving':'receiving';
-    o.receiveStyle=p.receiveStyle===2||p.receiveStyle==='2'?2:3;
+    o.receiveStyle=p.receiveStyle==='manual'?'manual':(p.receiveStyle===2||p.receiveStyle==='2'?2:3);
     o.view=p.view==='3d'?'3d':'2d';
     o.showZones=p.showZones!==false;
     o.players=p.players.map(v=>({...v,name:String(v.name??v.id).slice(0,36),number:String(v.number??'').slice(0,3),color:ROLE_COLORS[v.role]||'#b9d5e8'}));
+    // Per-rotation choices persist in drafts, named saves, and JSON exports.
+    const playerIds=new Set(o.players.map(v=>v.id));
+    if(p.manualPassers && typeof p.manualPassers==='object' && !Array.isArray(p.manualPassers)){
+      for(const r of [1,2,3,4,5,6]){
+        const ids=p.manualPassers[String(r)];
+        if(Array.isArray(ids))o.manualPassers[r]=[...new Set(ids.filter(id=>typeof id==='string'&&playerIds.has(id)))];
+      }
+    }
     o.frames=p.frames.map(f=>({
       label:String(f.label).slice(0,40),
       positions:Object.fromEntries(o.players.map(v=>[v.id,{
@@ -316,7 +350,7 @@
     // Cache each mode + rotation independently. Older (v1) saved plays are still supported.
     if(p.layouts&&typeof p.layouts==='object'&&!Array.isArray(p.layouts)){
       for(const [key,slot] of Object.entries(p.layouts).slice(0,18)){
-        if(!/^[1-6]-(serve|receive[23])$/.test(key)||!slot||!isValidProject({...p,frames:slot.frames}))continue;
+        if(!/^[1-6]-(serve|receive(?:[23]|Custom))$/.test(key)||!slot||!isValidProject({...p,frames:slot.frames}))continue;
         o.layouts[key]={frames:slot.frames.map(f=>({label:String(f.label).slice(0,40),
           positions:Object.fromEntries(o.players.map(v=>[v.id,{x:clamp(f.positions[v.id].x,-4.25,4.25),z:clamp(f.positions[v.id].z,.25,10.7)}])),
           ball:{x:clamp(f.ball.x,-4.35,4.35),y:clamp(f.ball.y,.3,5),z:clamp(f.ball.z,-8.8,10.7)}})),
@@ -337,17 +371,30 @@
     const frame=state.frames[state.frameIndex];if(!frame)return;
     const s=snapshotCurrent();frame.positions=s.positions;frame.ball=s.ball;
   }
-  function layoutKey(rotation=state.rotation,phase=state.phase,style=state.receiveStyle){return `${rotation}-${phase==='serving'?'serve':`receive${style}`}`;}
+  function layoutKey(rotation=state.rotation,phase=state.phase,style=state.receiveStyle){return `${rotation}-${phase==='serving'?'serve':style==='manual'?'receiveCustom':`receive${style}`}`;}
+  function currentPassers(){return receivePassers(state.players,state.rotation,state.receiveStyle,state.manualPassers[String(state.rotation)]);}
+  function togglePasser(id){
+    if(state.phase!=='receiving'||state.receiveStyle!=='manual')return;
+    const key=String(state.rotation);
+    const ids=state.manualPassers[key] || receivePassers(state.players,state.rotation,3);
+    state.manualPassers[key]=ids.includes(id)?ids.filter(v=>v!==id):[...ids,id];
+    renderLineup();renderManualPasserTools();draw();requestSave();
+  }
+  function renderManualPasserTools(){
+    const manual=state.phase==='receiving'&&state.receiveStyle==='manual';
+    $('manualPasserTools').hidden=!manual;
+    if(manual){const n=currentPassers().length;$('manualPasserCount').textContent=`${n} passer${n===1?'':'s'} selected`}
+  }
   function rememberLayout(){saveActiveFrame();state.layouts[layoutKey()]={frames:copy(state.frames),frameIndex:state.frameIndex};}
   function loadLayout(){
     const slot=state.layouts[layoutKey()];
     if(slot&&Array.isArray(slot.frames)&&slot.frames.length>=2){state.frames=copy(slot.frames);state.frameIndex=clamp(slot.frameIndex||0,0,state.frames.length-1);}
-    else{state.frames=formationFrames(state.players,state.rotation,state.phase,state.receiveStyle);state.frameIndex=0;}
+    else{state.frames=formationFrames(state.players,state.rotation,state.phase,state.receiveStyle,state.manualPassers[String(state.rotation)]);state.frameIndex=0;}
     setScene(state,state.frames[state.frameIndex]);playhead=state.frameIndex/(state.frames.length-1);
   }
   function projectData(){
     const layouts={...state.layouts,[layoutKey()]:{frames:state.frames,frameIndex:state.frameIndex}};
-    return copy({version:2,name:state.name,system:state.system,rotation:state.rotation,phase:state.phase,receiveStyle:state.receiveStyle,layouts,view:state.view,showZones:state.showZones,players:state.players,frames:state.frames,frameIndex:state.frameIndex,selectedId:state.selectedId,camera:state.camera});
+    return copy({version:3,name:state.name,system:state.system,rotation:state.rotation,phase:state.phase,receiveStyle:state.receiveStyle,manualPassers:state.manualPassers,layouts,view:state.view,showZones:state.showZones,players:state.players,frames:state.frames,frameIndex:state.frameIndex,selectedId:state.selectedId,camera:state.camera});
   }
   function saveDraft(){
     clearTimeout(saveTimer);
@@ -370,9 +417,12 @@
     $('phaseReceive').setAttribute('aria-pressed',String(state.phase==='receiving'));
     $('receiveOptions').hidden=state.phase!=='receiving';
     $('receiveStyle').value=String(state.receiveStyle);
+    renderManualPasserTools();
     $('phaseDescription').textContent=state.phase==='serving'
       ?'Serving: zone 1 serves from behind the end line. Watch serve flight, defensive coverage, and transition.'
-      :`Receiving: ${state.receiveStyle} suggested passers are highlighted. Players start in rotational order, then transition after the first pass.`;
+      :state.receiveStyle==='manual'
+        ?'Manual receiving: your selected passers have gold rings. Tap any player to change highlights without moving them.'
+        :`Receiving: ${state.receiveStyle} suggested passers are highlighted. Players start in rotational order, then transition after the first pass.`;
     $('phaseTag').textContent=state.phase==='serving'?'SERVING':'RECEIVING';
     $('rotationNumber').textContent=String(state.rotation).padStart(2,'0');
     $('systemTag').textContent=state.system.replace('-','–')+' SYSTEM';
@@ -384,7 +434,9 @@
     $('systemDescription').textContent=state.system==='5-1'
       ?'One setter runs the offense in all six rotations. In the back row, the setter transitions toward the net.'
       :'Two setters start opposite each other. The back-row setter handles setting duties, leaving three front-row attackers.';
-    $('courtHint').innerHTML=state.view==='2d'?'Drag players or the ball to reposition <span>·</span> Tap a player to edit':'Drag a player or ball <span>·</span> Swipe empty court to orbit <span>·</span> Pinch to zoom';
+    $('courtHint').innerHTML=state.phase==='receiving'&&state.receiveStyle==='manual'
+      ?'Tap player: <span>mark / unmark passer</span> · Drag: move player'
+      :state.view==='2d'?'Drag players or the ball to reposition <span>·</span> Tap a player to edit':'Drag a player or ball <span>·</span> Swipe empty court to orbit <span>·</span> Pinch to zoom';
     $('footHint').textContent=state.view==='2d'?'Drag to arrange your lineup':'Drag empty space to rotate the camera';
     $('projectName').value=state.name;
     const dots=$('rotationDots');dots.replaceChildren();
@@ -394,19 +446,30 @@
   }
   function renderLineup() {
     const list=$('lineupList');list.replaceChildren();
+    const manual=state.phase==='receiving'&&state.receiveStyle==='manual';
+    const passers=currentPassers();
     for(const p of [...state.players].sort((a,b)=>zoneFor(a,state.rotation)-zoneFor(b,state.rotation))){
+      const row=document.createElement('div');row.className='lineup-row';
       const b=document.createElement('button');b.className='lineup-item'+(state.selectedId===p.id?' active':'');
       const active=p.id===activeSetter(state.players,state.rotation)?.id;
-      const action=state.phase==='serving'&&zoneFor(p,state.rotation)===1?' · SERVER':state.phase==='receiving'&&receivePassers(state.players,state.rotation,state.receiveStyle).includes(p.id)?' · PASSER':'';
+      const isPasser=state.phase==='receiving'&&passers.includes(p.id);
+      const action=state.phase==='serving'&&zoneFor(p,state.rotation)===1?' · SERVER':isPasser?' · PASSER':'';
       b.innerHTML=`<span class="player-number" style="background:${p.color}">${escapeHtml(p.number)}</span><span class="player-desc"><strong>${escapeHtml(p.name)}</strong><small>${escapeHtml(roleName(p.role))}${active?' · Active setter':''}${action}</small></span><span class="zone-badge">Z${zoneFor(p,state.rotation)}</span>`;
-      b.onclick=()=>selectPlayer(p.id);list.appendChild(b);
+      b.onclick=()=>selectPlayer(p.id);row.appendChild(b);
+      if(manual){
+        const toggle=document.createElement('button');toggle.className='passer-toggle';toggle.type='button';
+        toggle.setAttribute('aria-pressed',String(isPasser));
+        toggle.setAttribute('aria-label',`${isPasser?'Remove':'Mark'} ${p.name} ${isPasser?'from':'as'} passer`);
+        toggle.textContent=isPasser?'✓ Pass':'+ Pass';toggle.onclick=()=>togglePasser(p.id);row.appendChild(toggle);
+      }
+      list.appendChild(row);
     }
     const a=activeSetter(state.players,state.rotation);
     const server=serverFor(state.players,state.rotation);
-    const passers=receivePassers(state.players,state.rotation,state.receiveStyle);
+    const passerNames=state.players.filter(p=>passers.includes(p.id)).map(p=>p.name);
     $('setterNote').textContent=state.phase==='serving'
       ?`Server: ${server.name} (zone 1). ${a?`Active setter: ${a.name}.`:''} Move the server to adjust the serve location.`
-      :`Suggested passers: ${state.players.filter(p=>passers.includes(p.id)).map(p=>p.name).join(', ')}. ${a?`Active setter: ${a.name}.`:''} Drag to customize.`;
+      :`${manual?'Selected':'Suggested'} passers: ${passerNames.join(', ')||'none'}. ${a?`Active setter: ${a.name}.`:''} ${manual?'Tap players or use Pass buttons to change highlights.':'Drag to customize.'}`;
   }
   function renderInspector(){
     const root=$('playerInspector');root.replaceChildren();
@@ -459,15 +522,29 @@
     stopPlayback();setScene(state,state.frames[state.frameIndex]);rememberLayout();state.phase=phase;loadLayout();renderControls();requestSave();toast(`${phase==='serving'?'Serving':'Receiving'} formation loaded`);
   }
   function changeReceiveStyle(style){
+    if(style!=='manual')style=style===2?2:3;
     if(style===state.receiveStyle)return;
-    stopPlayback();setScene(state,state.frames[state.frameIndex]);rememberLayout();state.receiveStyle=style;loadLayout();renderControls();requestSave();toast(`${style}-passer formation loaded`);
+    stopPlayback();setScene(state,state.frames[state.frameIndex]);
+    // Manual selection is a visual marker mode; first entry keeps the exact current
+    // player positions, custom keyframes and ball rather than rebuilding the play.
+    const framesBefore=copy(state.frames),frameBefore=state.frameIndex;
+    const oldPassers=currentPassers();
+    rememberLayout();state.receiveStyle=style;
+    const newKey=layoutKey();
+    if(style==='manual' && !Array.isArray(state.manualPassers[String(state.rotation)]))
+      state.manualPassers[String(state.rotation)]=oldPassers;
+    if(style==='manual'&&!state.layouts[newKey]){
+      state.frames=framesBefore;state.frameIndex=frameBefore;
+      setScene(state,state.frames[state.frameIndex]);playhead=state.frameIndex/(state.frames.length-1);
+    }else loadLayout();
+    renderControls();requestSave();toast(style==='manual'?'Tap players to mark passers':'Automatic '+style+'-passer setup loaded');
   }
   function changeSystem(system){
     if(system===state.system)return;
     if(!confirm(`Switch to a ${system} offense? This resets your lineup and keyframes. Save your current play first if you want to keep it.`)){$('systemSelect').value=state.system;return;}
     const name=state.name,view=state.view,cam=copy(state.camera),phase=state.phase,receiveStyle=state.receiveStyle;
     state=makeDefault(system);state.name=name;state.view=view;state.camera=cam;state.phase=phase;state.receiveStyle=receiveStyle;
-    state.frames=formationFrames(state.players,state.rotation,phase,receiveStyle);setScene(state,state.frames[0]);currentSavedId=null;playhead=0;stopPlayback();renderControls();requestSave();toast(`Switched to ${system} system`);
+    state.frames=formationFrames(state.players,state.rotation,phase,receiveStyle,state.manualPassers[String(state.rotation)]);setScene(state,state.frames[0]);currentSavedId=null;playhead=0;stopPlayback();renderControls();requestSave();toast(`Switched to ${system} system`);
   }
   function addFrame(){stopPlayback();saveActiveFrame();const s=snapshotCurrent();state.frames.splice(state.frameIndex+1,0,{label:`Custom movement ${state.frames.length-2}`,positions:s.positions,ball:s.ball});state.frameIndex++;playhead=state.frameIndex/(state.frames.length-1);renderFrames();requestSave();toast('Keyframe added — now drag objects to their new positions');}
   function removeFrame(i){if(state.frames.length<=2)return;stopPlayback();state.frames.splice(i,1);state.frameIndex=clamp(state.frameIndex>=i?state.frameIndex-1:state.frameIndex,0,state.frames.length-1);setScene(state,state.frames[state.frameIndex]);playhead=state.frameIndex/(state.frames.length-1);renderFrames();draw();requestSave();}
@@ -641,8 +718,8 @@
   function drawPlayer2(p){
     const pos=point(p.x,0,p.z),r=clamp(rendererCache.topdown.scale*.47,13,22),active=p.id===state.selectedId;
     if(active){circle(pos.x,pos.y,r+8,'#fff7e818','#ffe1a0',2.1);circle(pos.x,pos.y,r+12,null,'#ffe1a05b',1.1);}
-    if(!playing&&state.frameIndex===0){
-      const highlighted=state.phase==='serving'?zoneFor(p,state.rotation)===1:receivePassers(state.players,state.rotation,state.receiveStyle).includes(p.id);
+    if((!playing&&state.frameIndex===0)||(state.phase==='receiving'&&state.receiveStyle==='manual')){
+      const highlighted=state.phase==='serving'?zoneFor(p,state.rotation)===1:currentPassers().includes(p.id);
       if(highlighted){circle(pos.x,pos.y,r+6,null,'#ffd782',2.3);textAt(state.phase==='serving'?'SERVER':'PASS',{x:pos.x,y:pos.y-r-13},'#ffe09e','800 9px system-ui');}
     }
     circle(pos.x+2,pos.y+4,r+1,'#09233370');circle(pos.x,pos.y,r,p.color,'#f7faf3',2.2);
@@ -669,8 +746,8 @@
     circle(head.x,head.y,clamp(k*.2,4.3,14),'#f3c4a0','#ffe5c5',.9);
     textAt(p.number,{x:hip.x,y:(torsoTop.y+hip.y)*.5},'#152b37',`800 ${clamp(k*.29,8,14)}px system-ui`);
     if(p.id===state.selectedId){circle(foot.x,foot.y,clamp(k*.54,13,28),null,'#ffe0a4',2.4);circle(head.x,head.y,clamp(k*.28,7,19),null,'#ffe0a45a',1.6);}
-    if(!playing&&state.frameIndex===0){
-      const highlighted=state.phase==='serving'?zoneFor(p,state.rotation)===1:receivePassers(state.players,state.rotation,state.receiveStyle).includes(p.id);
+    if((!playing&&state.frameIndex===0)||(state.phase==='receiving'&&state.receiveStyle==='manual')){
+      const highlighted=state.phase==='serving'?zoneFor(p,state.rotation)===1:currentPassers().includes(p.id);
       if(highlighted){circle(foot.x,foot.y,clamp(k*.6,15,29),null,'#ffe0a4',2.2);textAt(state.phase==='serving'?'SERVER':'PASS',point(x,2.75,z),'#ffe0a4','800 9px system-ui');}
     }
     const label=point(x,2.35,z),name=String(p.name||p.id).slice(0,13);
@@ -724,7 +801,7 @@
       const v=[...gesturePointers.values()];pinchStart={distance:Math.hypot(v[0].x-v[1].x,v[0].y-v[1].y)||1,zoom:state.camera.zoom};pointerMode='pinch';activePointer=null;return;
     }
     if(gesturePointers.size>2)return;
-    activePointer=e.pointerId;const picked=pickObject(p);pointerMode=picked||{type:state.view==='3d'?'orbit':'none'};pointerMode.last=p;dragMoved=false;
+    activePointer=e.pointerId;const picked=pickObject(p);pointerMode=picked||{type:state.view==='3d'?'orbit':'none'};pointerMode.last=p;pointerMode.start=p;dragMoved=false;
     if(pointerMode.type==='player')selectPlayer(pointerMode.id);
     else if(pointerMode.type==='ball')selectPlayer('ball');
     if(pointerMode.type==='player'||pointerMode.type==='ball'||pointerMode.type==='orbit')canvas.classList.add('dragging');
@@ -738,7 +815,9 @@
     }
     if(activePointer!==e.pointerId||!pointerMode)return;
     const diff=Math.hypot(p.x-pointerMode.last.x,p.y-pointerMode.last.y);
-    if(diff>2)dragMoved=true;
+    if(Math.hypot(p.x-pointerMode.start.x,p.y-pointerMode.start.y)>7)dragMoved=true;
+    // Allow a little finger movement before distinguishing a tap from a drag.
+    if(pointerMode.type==='player'&&state.phase==='receiving'&&state.receiveStyle==='manual'&&!dragMoved)return;
     if(pointerMode.type==='orbit'){
       state.camera.az-= (p.x-pointerMode.last.x)*.009;
       state.camera.el=clamp(state.camera.el+(p.y-pointerMode.last.y)*.007,.22,1.42);
@@ -762,7 +841,11 @@
   function pointerUp(e){
     if(!gesturePointers.has(e.pointerId))return;
     gesturePointers.delete(e.pointerId);
-    if(gesturePointers.size===0){if(dragMoved)requestSave();pointerMode=null;activePointer=null;pinchStart=null;canvas.classList.remove('dragging');}
+    if(gesturePointers.size===0){
+      if(e.type!=='pointercancel'&&!dragMoved&&pointerMode&&pointerMode.type==='player'&&state.phase==='receiving'&&state.receiveStyle==='manual')
+        togglePasser(pointerMode.id);
+      if(dragMoved)requestSave();pointerMode=null;activePointer=null;pinchStart=null;canvas.classList.remove('dragging');
+    }
     else if(pointerMode==='pinch'){pointerMode={type:'none',last:[...gesturePointers.values()][0]};activePointer=[...gesturePointers.keys()][0];}
   }
   canvas.addEventListener('pointerdown',pointerDown);
@@ -778,7 +861,9 @@
   $('systemSelect').onchange=e=>changeSystem(e.target.value);
   $('phaseServe').onclick=()=>changePhase('serving');
   $('phaseReceive').onclick=()=>changePhase('receiving');
-  $('receiveStyle').onchange=e=>changeReceiveStyle(Number(e.target.value));
+  $('receiveStyle').onchange=e=>changeReceiveStyle(e.target.value==='manual'?'manual':Number(e.target.value));
+  $('clearPassers').onclick=()=>{state.manualPassers[String(state.rotation)]=[];renderLineup();renderManualPasserTools();draw();requestSave();toast('All passer highlights cleared');};
+  $('suggestPassers').onclick=()=>{state.manualPassers[String(state.rotation)]=receivePassers(state.players,state.rotation,3);renderLineup();renderManualPasserTools();draw();requestSave();toast('Three suggested passers highlighted');};
   $('prevRotation').onclick=()=>changeRotation(state.rotation===1?6:state.rotation-1);
   $('nextRotation').onclick=()=>changeRotation(state.rotation===6?1:state.rotation+1);
   $('resetCamera').onclick=()=>{state.camera={az:.58,el:.7,zoom:1};draw();requestSave();toast('Court view reset');};
@@ -786,7 +871,7 @@
     if(!confirm('Reset all player positions and animation frames for this rotation? Your player names and jersey numbers will stay the same.'))return;
     stopPlayback();
     delete state.layouts[layoutKey()];
-    state.frames=formationFrames(state.players,state.rotation,state.phase,state.receiveStyle);
+    state.frames=formationFrames(state.players,state.rotation,state.phase,state.receiveStyle,state.manualPassers[String(state.rotation)]);
     state.frameIndex=0;playhead=0;state.camera={az:.58,el:.7,zoom:1};
     setScene(state,state.frames[0]);
     renderControls();requestSave();toast('All six players reset to this rotation');
@@ -801,6 +886,7 @@
   $('projectName').oninput=e=>{state.name=e.target.value.slice(0,60);requestSave();};
   $('saveBtn').onclick=savePlay;
   $('exportBtn').onclick=exportPlay;
+  $('exportPlaybookBtn').onclick=exportPlay;
   $('savedSelect').onchange=e=>openSaved(e.target.value);
   $('newBtn').onclick=newPlay;
   $('importBtn').onclick=()=>$('importFile').click();
@@ -826,7 +912,7 @@
       const msg=$('fallbackMessage');if(msg)msg.textContent='Interactive display failed. Please open this page in Safari or Chrome, or try Reset player positions.';}
   });
   // Public, read-only-ish diagnostic API for basic tests and power users.
-  window.RotationStudio={getState:()=>projectData(),zoneFor:(id,rotation=state.rotation)=>{const p=state.players.find(v=>v.id===id);return p?zoneFor(p,rotation):null;},setPhase:changePhase,setReceiveStyle:changeReceiveStyle,setRotation:changeRotation};
+  window.RotationStudio={getState:()=>projectData(),zoneFor:(id,rotation=state.rotation)=>{const p=state.players.find(v=>v.id===id);return p?zoneFor(p,rotation):null;},setPhase:changePhase,setReceiveStyle:changeReceiveStyle,setRotation:changeRotation,togglePasser,currentPassers};
   playhead=state.frameIndex/(state.frames.length-1);
   renderControls();resize();
 })();
